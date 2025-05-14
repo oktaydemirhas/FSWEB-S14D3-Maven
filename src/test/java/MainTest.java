@@ -73,8 +73,13 @@ public class MainTest {
         PrintStream saveOut = System.out;
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertEquals(car.startEngine(), "the car's engine is starting");
-        assertThat(out.toString(), containsString(car.getClass().getSimpleName()));
+
+        car.startEngine();
+
+        assertThat(out.toString().trim(), containsString("the car's engine is starting"));
+        assertThat(out.toString().trim(), containsString(car.getClass().getSimpleName()));
+
+        System.setOut(saveOut);
     }
 
     @DisplayName("Car accelerate metodu doğru çalışıyor mu ?")
@@ -83,8 +88,13 @@ public class MainTest {
         PrintStream saveOut = System.out;
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertEquals(car.accelerate(), "the car is accelerating");
-        assertThat(out.toString(), containsString(car.getClass().getSimpleName()));
+
+        car.accelerate();
+
+        assertThat(out.toString().trim(), containsString("the car is accelerating"));
+        assertThat(out.toString().trim(), containsString(car.getClass().getSimpleName()));
+
+        System.setOut(saveOut);
     }
 
     @DisplayName("Car brake metodu doğru çalışıyor mu ?")
@@ -93,8 +103,13 @@ public class MainTest {
         PrintStream saveOut = System.out;
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertEquals(car.brake(), "the car is braking");
-        assertThat(out.toString(), containsString(car.getClass().getSimpleName()));
+
+        car.brake();
+
+        assertThat(out.toString().trim(), containsString("the car is braking"));
+        assertThat(out.toString().trim(), containsString(car.getClass().getSimpleName()));
+
+        System.setOut(saveOut);
     }
 
     @DisplayName("Mitsubishi, Ford, Holden doğru sınıf tipinde mi ?")
